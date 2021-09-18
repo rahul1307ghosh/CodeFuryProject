@@ -11,8 +11,8 @@
 	<hr>
 	<a>Application Info</a>
 	<div>Popular items</div>
-	<a>Register</a>
-	<a>Login</a>
-	<a>Input user</a>
+	<a href="register.jsp">Register</a><br>
+	<a href="login.jsp">Login</a><br>
+	<a>Import user</a>
 </body>
 </html>
