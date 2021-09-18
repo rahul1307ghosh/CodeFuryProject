@@ -1,10 +1,9 @@
 package com.hsbc.entity;
 
 public class User {
-	private int uId;
 	private String name;
 	private String role;
-	private int telphone;
+	private long telphone;
 	private String email;
 	private String userName;
 	private String pwd;
@@ -13,8 +12,7 @@ public class User {
 
 	}
 
-	public User(int uId, String name, String role, int telphone, String email, String userName, String pwd) {
-		this.uId = uId;
+	public User(String name, String role, long telphone, String email, String userName, String pwd) {
 		this.name = name;
 		this.role = role;
 		this.telphone = telphone;
@@ -23,13 +21,6 @@ public class User {
 		this.pwd = pwd;
 	}
 
-	public int getuId() {
-		return uId;
-	}
-
-	public void setuId(int uId) {
-		this.uId = uId;
-	}
 
 	public String getName() {
 		return name;
@@ -47,7 +38,7 @@ public class User {
 		this.role = role;
 	}
 
-	public int getTelphone() {
+	public long getTelphone() {
 		return telphone;
 	}
 
