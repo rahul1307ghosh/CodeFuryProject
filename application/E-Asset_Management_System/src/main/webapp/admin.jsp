@@ -14,7 +14,7 @@
  	
     
    
-    <p><a href="addAsset.jsp"><button >Add Asset</button></a></p>
+    <p><a href="getAssetCategory"><button >Add Asset</button></a></p>
   
     <p><a href="overDue.jsp"><button >Over Due Asset</button></a></p>
   
