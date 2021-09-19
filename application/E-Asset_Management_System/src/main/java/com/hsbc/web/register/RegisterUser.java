@@ -30,7 +30,7 @@ public class RegisterUser extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String pass = request.getParameter("pwd1");
 		
-		String resp = RegisterDao.save(new User(uname, role, telephone, email, userName, pass));
+		String resp = RegisterDao.save(new User(uname, role, telephone, email, userName, pass, ""));
 		response.getWriter().write(resp);
 		
 		try {
