@@ -9,10 +9,10 @@
 </head>
 <body>
 
-    <p >Admin</p>
+    <p>Admin</p>
  
- 
-    <p><a href="userInfo"><button>User Information</button></a></p>
+ 	
+    
    
     <p><a href="addAsset.jsp"><button >Add Asset</button></a></p>
   

@@ -2,6 +2,9 @@ package com.hsbc.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,9 +28,11 @@ public class AddAsset  extends HttpServlet {
 		String uname = request.getParameter("uname");
 		String category = request.getParameter("category");
 		String description =(request.getParameter("description"));
-
+		Date date = new Date();  
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
 		
-		String resp = AssetDao.save(new Asset(uname, category,description));
+		String resp = AssetDao.save(new Asset(uname, category,description,dtf.format(now),1));
 		response.getWriter().write(resp);
 		
 		try {
