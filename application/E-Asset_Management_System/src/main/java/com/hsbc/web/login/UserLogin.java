@@ -22,8 +22,13 @@ public class UserLogin extends HttpServlet {
 		System.out.println("id choice : "+id_choice);
 		String pwd = request.getParameter("pwd");
 		
-		String resp = LoginDao.login(uname_email, id_choice, pwd);
-		response.getWriter().write(resp);
+		String role = LoginDao.login(uname_email, id_choice, pwd);
+		if(role.equalsIgnoreCase("admin")) {
+			System.out.println("Admin Home Page");
+		}else{
+			System.out.println("User Home Page");
+		}
+		
 	}
 
 }
