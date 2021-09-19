@@ -1,4 +1,4 @@
-package com.hsbc.web.login;
+package com.hsbc.web;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -24,6 +24,7 @@ public class UserLogin extends HttpServlet {
 		
 		String role = LoginDao.login(uname_email, id_choice, pwd);
 		if(role.equalsIgnoreCase("admin")) {
+			
 			System.out.println("Admin Home Page");
 		}else{
 			System.out.println("User Home Page");

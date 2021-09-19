@@ -1,4 +1,4 @@
-package com.hsbc.web.register;
+package com.hsbc.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
