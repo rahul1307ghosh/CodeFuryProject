@@ -14,10 +14,6 @@
 				<td><input type="text" name="uname"></td>
 			</tr>
 			<tr>
-				<td><lable>Role </lable></td>
-				<td><input type="text" name="role"></td>
-			</tr>
-			<tr>
 				<td><lable>Telephone </lable></td>
 				<td><input type="text" name="telephone"></td>
 			</tr>

@@ -24,7 +24,7 @@ public class RegisterUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uname = request.getParameter("uname");
-		String role = request.getParameter("role");
+		String role = "Borrower";
 		long telephone = Long.parseLong(request.getParameter("telephone"));
 		String email = request.getParameter("email");
 		String userName = request.getParameter("userName");
