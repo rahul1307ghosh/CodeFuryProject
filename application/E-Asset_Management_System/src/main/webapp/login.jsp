@@ -22,7 +22,7 @@
 				<td><input type="password" name="pwd"></td>
 			</tr>
 			<tr>
-				<td><button tyep="submit">Login</button></td>
+				<td><button type="submit">Login</button></td>
 			</tr>
 		</table>
 	</form>

@@ -1,5 +1,6 @@
 package com.hsbc.service;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,14 +8,20 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import com.hsbc.entity.User;
 import com.hsbc.util.DBUtil;
+import com.hsbc.util.EncryptionPass;
 
 public class LoginDao {
 	public static String login(String uname_email, String id_choice, String pwd) {
 		String resp = "Invalid Credentials";
-		String query = "select count(email) from user where " + id_choice + " = \"" + uname_email + "\" and password ="
-				+ "\"" + pwd + "\"";
+		String query = "";
+		try {
+			query = "select count(email) from user where " + id_choice + " = \"" + uname_email + "\" and password ="
+					+ "\"" + EncryptionPass.toHexString(EncryptionPass.getSHA(pwd)) + "\"";
+		} catch (NoSuchAlgorithmException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		System.out.println(query);
 		try {
 			Connection conn = DBUtil.getConnConnection();

@@ -1,5 +1,6 @@
 package com.hsbc.service;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 
 import com.hsbc.entity.User;
 import com.hsbc.util.DBUtil;
+import com.hsbc.util.EncryptionPass;
 
 public class RegisterDao {
 	
@@ -35,7 +37,13 @@ public class RegisterDao {
 				pst.setLong(3 , user.getTelphone());
 				pst.setString(4, user.getEmail());
 				pst.setString(5, user.getUserName());
-				pst.setString(6, user.getPwd());
+				try {
+					pst.setString(6, EncryptionPass.toHexString(EncryptionPass.getSHA(user.getPwd())));
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 
 
 				int count = pst.executeUpdate();

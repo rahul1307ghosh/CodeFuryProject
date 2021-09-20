@@ -33,26 +33,26 @@ public class UserLogin extends HttpServlet {
 		String id_choice = request.getParameter("uname-email");
 		System.out.println("id choice : " + id_choice);
 		String pwd = request.getParameter("pwd");
-
+		
+		List<User> userList = UserInfoDao.listAll();
 		String role = LoginDao.login(uname_email, id_choice, pwd);
 		if (role.equalsIgnoreCase("admin")) {
-			List<User> userList = UserInfoDao.listAll();
+			
 
 			for(User user:userList) {
 				if(user.getRole().equalsIgnoreCase(role)) {
 					request.getSession(true).setAttribute("adminData", user);
 					System.out.println(user);
 					userList.remove(user);
+					System.out.println(userList);
+					request.getSession(true).setAttribute("list", userList);
+					request.getRequestDispatcher("/adminHomePage.jsp").forward(request, response);
+					System.out.println("Admin Home Page");
 					break;
 				}
 			}
-			System.out.println(userList);
-			request.getSession(true).setAttribute("list", userList);
-			request.getRequestDispatcher("/admin.jsp").forward(request, response);
-			System.out.println("Admin Home Page");
-		} else {
+		} else if(role.equalsIgnoreCase("borrower")){
 			System.out.println("User Home Page");
-			List<User> userList = UserInfoDao.listAll();
 
 			for(User user:userList) {
 				if(user.getUserName().equals(uname_email) || user.getEmail().equals(uname_email)) {
@@ -61,8 +61,10 @@ public class UserLogin extends HttpServlet {
 					break;
 				}
 			}
-			request.getRequestDispatcher("/EmployeeLogin.jsp").forward(request, response);
+			request.getRequestDispatcher("/userHomePage.jsp").forward(request, response);
 			
+		}else {
+			response.getWriter().write(role);
 		}
 
 	}
