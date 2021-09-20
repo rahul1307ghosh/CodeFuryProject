@@ -19,7 +19,7 @@
 			<tr>
 				<td>Category</td>
 				<td><select name="category">
-						<c:forEach var="emp" items="${list}">
+						<c:forEach var="emp" items="${catList}">
 							<option value="${emp.category}">${emp.category}</option>
 
 						</c:forEach>

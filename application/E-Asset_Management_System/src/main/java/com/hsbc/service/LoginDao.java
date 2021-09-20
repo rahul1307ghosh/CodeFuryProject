@@ -63,7 +63,6 @@ public class LoginDao {
 	}
 
 	private static void setLastLogin(String id_choice, String uname_email) {
-		String role = "";
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		System.out.println(dtf.format(now));
@@ -84,27 +83,5 @@ public class LoginDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	private static User getUserDetails(String id_choice, String uname_email) {
-		String query = "Select * from user where " + id_choice + " = \"" + uname_email + "\"";
-		User user;
-		try {
-			Connection conn = DBUtil.getConnConnection();
-
-			PreparedStatement pst_1 = conn.prepareStatement(query);
-
-			System.out.println(query);
-			ResultSet rs = pst_1.executeQuery();
-			
-			if (rs.next()) {
-				user = new User(rs.getString(1), rs.getString(2), rs.getLong(3), rs.getString(4), rs.getString(5) , "", rs.getDate(7).toString());
-			}
-			
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 }

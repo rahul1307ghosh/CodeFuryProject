@@ -31,7 +31,7 @@ public class GetCategory  extends HttpServlet {
 		
 		
 		List<AssetCategory> assetList = AssetCategoryDao.listAll();
-		request.getSession(true).setAttribute("list", assetList);
+		request.getSession(true).setAttribute("catList", assetList);
 		request.getRequestDispatcher("/addAsset.jsp").forward(request, response);
 		
 		try {

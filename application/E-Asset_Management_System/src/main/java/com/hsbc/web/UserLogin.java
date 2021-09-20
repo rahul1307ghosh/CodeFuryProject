@@ -3,6 +3,7 @@ package com.hsbc.web;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,6 +52,17 @@ public class UserLogin extends HttpServlet {
 			System.out.println("Admin Home Page");
 		} else {
 			System.out.println("User Home Page");
+			List<User> userList = UserInfoDao.listAll();
+
+			for(User user:userList) {
+				if(user.getUserName().equals(uname_email) || user.getEmail().equals(uname_email)) {
+					request.getSession(true).setAttribute("userData", user);
+					System.out.println(user);
+					break;
+				}
+			}
+			request.getRequestDispatcher("/EmployeeLogin.jsp").forward(request, response);
+			
 		}
 
 	}

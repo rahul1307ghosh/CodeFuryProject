@@ -22,8 +22,8 @@ public class UserInfoDao {
 			ResultSet rs = pst.executeQuery();
 
 			while(rs.next()) {
-				userList.add(new User(rs.getString("NAME"), rs.getString(3), rs.getLong(4),
-						rs.getString("EMAIL"), "", "",rs.getString("LASTLOGIN")));
+				userList.add(new User(rs.getString("NAME"), rs.getString(3), rs.getLong("TELEPHONE"),
+						rs.getString("EMAIL"), rs.getString(6), "",rs.getString("LASTLOGIN")));
 			} 
 
 		} catch (SQLException e) {
