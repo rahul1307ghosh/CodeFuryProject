@@ -6,9 +6,16 @@ public class EmployeeDisplayAsset {
 	private User user;
 	private String role;
 	private List<DisplayAssetList> borrowedAsset;
+	private String prevLogin;
 	
 	
 	
+	public String getPrevLogin() {
+		return prevLogin;
+	}
+	public void setPrevLogin(String prevLogin) {
+		this.prevLogin = prevLogin;
+	}
 	public String getRole() {
 		return role;
 	}

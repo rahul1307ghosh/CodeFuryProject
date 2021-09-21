@@ -58,6 +58,7 @@ public class UserLogin extends HttpServlet {
 		} else if(empUser.getRole().equalsIgnoreCase("borrower")){
 			System.out.println("User Home Page");
 			request.getSession(true).setAttribute("userData", empUser.getUser());
+			request.getSession(true).setAttribute("prevLogin", empUser.getPrevLogin());
 			request.getSession(true).setAttribute("borrowedAssets", empUser.getBorrowedAsset());
 			System.out.println(empUser.getUser());
 //			for(User user:userList) {

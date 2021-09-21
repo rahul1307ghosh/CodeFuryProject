@@ -27,7 +27,7 @@
 				<td><c:out value="${userData.name}" /></td>
 				<td><c:out value="${userData.email}" /></td>
 				<td><c:out value="${userData.userName}" /></td>
-				<td><c:out value="${userData.lastLogin}" /></td>
+				<td><c:out value="${prevLogin}" /></td>
 			</tr>
 
 		</thead>

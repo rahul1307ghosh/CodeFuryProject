@@ -57,7 +57,7 @@ public class LoginDao {
 				empUser.setUser(user);
 				empUser.setRole(getRole(id_choice, uname_email));
 				empUser.setBorrowedAsset(assetlist);
-				setLastLogin(id_choice, uname_email);
+				empUser.setPrevLogin(setLastLogin(id_choice, uname_email));
 				System.out.println("Login Successfull");
 				return empUser;
 			}
@@ -128,20 +128,30 @@ public class LoginDao {
 		return role;
 	}
 
-	private static void setLastLogin(String id_choice, String uname_email) {
+	private static String setLastLogin(String id_choice, String uname_email) {
+		String prev_last_login = "";
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		System.out.println(dtf.format(now));
-		String query = "Update user set lastlogin = \" " + dtf.format(now) + " \" where " + id_choice + " = \""
+		String query1 = "select lastlogin from user where " + id_choice + " = \""
+				+ uname_email + "\"";
+		String query2 = "Update user set lastlogin = \" " + dtf.format(now) + " \" where " + id_choice + " = \""
 				+ uname_email + "\"";
 
 		try {
 			Connection conn = DBUtil.getConnConnection();
+			PreparedStatement pst_1 = conn.prepareStatement(query1);
+			ResultSet rs = pst_1.executeQuery();
+			if(rs.next()) {
+				prev_last_login = rs.getTimestamp(1).toString();
+			}
+			
+			System.out.println(prev_last_login);
 
-			PreparedStatement pst_1 = conn.prepareStatement(query);
+			PreparedStatement pst_2 = conn.prepareStatement(query2);
 
-			System.out.println(query);
-			int count = pst_1.executeUpdate();
+			System.out.println(query2);
+			int count = pst_2.executeUpdate();
 
 			if (count == 1) {
 				System.out.println("last login datetime added");
@@ -150,5 +160,6 @@ public class LoginDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return prev_last_login;
 	}
 }

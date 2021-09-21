@@ -3,7 +3,7 @@ package com.hsbc.entity;
 public class User {
 	private String name;
 	private String role;
-	private long telphone;
+	private long telephone;
 	private String email;
 	private String userName;
 	private String pwd;
@@ -16,7 +16,7 @@ public class User {
 	public User(String name, String role, long telphone, String email, String userName, String pwd, String lastLogin) {
 		this.name = name;
 		this.role = role;
-		this.telphone = telphone;
+		this.telephone = telphone;
 		this.email = email;
 		this.userName = userName;
 		this.pwd = pwd;
@@ -33,11 +33,11 @@ public class User {
 	}
 
 	public void setTelphone(long telphone) {
-		this.telphone = telphone;
+		this.telephone = telphone;
 	}
 	
 	public long getTelphone() {
-		return telphone;
+		return telephone;
 	}
 
 	public String getName() {
@@ -82,6 +82,6 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return name + " " + telphone + " " + email + " " + userName + " " +lastLogin;
+		return name + " " + telephone + " " + email + " " + userName + " " +lastLogin;
 	}
 }
