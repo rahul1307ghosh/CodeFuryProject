@@ -57,7 +57,7 @@
 											<hr>
 
 											<div class="text-center">
-												<a class="btn btn-primary btn-user btn-block" href="home.jsp">Go Back</a>
+												<a class="btn btn-link" href="home.jsp">Go Back</a>
 											</div>
 										</div>
 									</form>

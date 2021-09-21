@@ -66,9 +66,12 @@
 										<div class="text-center">
 											<button class="btn btn-primary btn-user btn-block"
 												type="submit">Create an Account!</button>
-											<a class="btn btn-primary btn-user btn-block"
-												href="home.jsp">Go Back</a>
 										</div>
+										<hr>
+										<div class="text-center">
+											<a class="btn btn-link" href="home.jsp">Go Back</a>
+										</div>
+										
 									</form>
 
 								</div>
