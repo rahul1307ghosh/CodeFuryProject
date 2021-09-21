@@ -9,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.hsbc.entity.EmployeeDisplayAsset;
 import com.hsbc.entity.User;
 import com.hsbc.service.LoginDao;
 import com.hsbc.service.UserInfoDao;
@@ -35,36 +38,39 @@ public class UserLogin extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		
 		List<User> userList = UserInfoDao.listAll();
-		String role = LoginDao.login(uname_email, id_choice, pwd);
-		if (role.equalsIgnoreCase("admin")) {
+		EmployeeDisplayAsset empUser = new EmployeeDisplayAsset();
+		empUser = LoginDao.login(uname_email, id_choice, pwd);
+		if (empUser.getRole().equalsIgnoreCase("admin")) {
 			
 
 			for(User user:userList) {
-				if(user.getRole().equalsIgnoreCase(role)) {
+				if(empUser.getRole().equalsIgnoreCase("admin")) {
 					request.getSession(true).setAttribute("adminData", user);
 					System.out.println(user);
 					userList.remove(user);
 					System.out.println(userList);
-					request.getSession(true).setAttribute("list", userList);
+					request.getSession(true).setAttribute("users", userList);
 					request.getRequestDispatcher("/adminHomePage.jsp").forward(request, response);
 					System.out.println("Admin Home Page");
 					break;
 				}
 			}
-		} else if(role.equalsIgnoreCase("borrower")){
+		} else if(empUser.getRole().equalsIgnoreCase("borrower")){
 			System.out.println("User Home Page");
-
-			for(User user:userList) {
-				if(user.getUserName().equals(uname_email) || user.getEmail().equals(uname_email)) {
-					request.getSession(true).setAttribute("userData", user);
-					System.out.println(user);
-					break;
-				}
-			}
+			request.getSession(true).setAttribute("userData", empUser.getUser());
+			request.getSession(true).setAttribute("borrowedAssets", empUser.getBorrowedAsset());
+			System.out.println(empUser.getUser());
+//			for(User user:userList) {
+//				if(user.getUserName().equals(uname_email) || user.getEmail().equals(uname_email)) {
+//					request.getSession(true).setAttribute("userData", user);
+//					System.out.println(user);
+//					break;
+//				}
+//			}
 			request.getRequestDispatcher("/userHomePage.jsp").forward(request, response);
 			
 		}else {
-			response.getWriter().write(role);
+			response.getWriter().write("Invalid Credentials");
 		}
 
 	}

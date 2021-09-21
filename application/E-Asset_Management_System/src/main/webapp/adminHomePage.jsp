@@ -14,9 +14,9 @@
 </head>
 <body>
 
-    <p>Admin</p>
- 
- 	<table class="table">
+	<p>Admin</p>
+
+	<table class="table">
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -33,12 +33,37 @@
 
 		</thead>
 	</table>
-    
-   
-    <p><a href="getAssetCategory"><button >Add Asset</button></a></p>
-  
-    <p><a href="overDue.jsp"><button >Over Due Asset</button></a></p>
-  
- 
+
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>UserName</th>
+					<th>Last Login time</th>
+				</tr>
+				<c:forEach var="user" items="${users}">
+					<tr>
+						<td><c:out value="${user.name}" /></td>
+						<td><c:out value="${user.email}" /></td>
+						<td><c:out value="${user.userName}" /></td>
+						<td><c:out value="${user.lastLogin}" /></td>
+					</tr>
+				</c:forEach>
+			</thead>
+		</table>
+	</div>
+
+
+	<p>
+		<a href="getAssetCategory"><button>Add Asset</button></a>
+	</p>
+
+	<p>
+		<a href="overDue.jsp"><button>Over Due Asset</button></a>
+	</p>
+
+
 </body>
 </html>

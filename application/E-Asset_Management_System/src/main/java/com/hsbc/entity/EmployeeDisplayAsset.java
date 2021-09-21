@@ -1,0 +1,30 @@
+package com.hsbc.entity;
+
+import java.util.List;
+
+public class EmployeeDisplayAsset {
+	private User user;
+	private String role;
+	private List<DisplayAssetList> borrowedAsset;
+	
+	
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public List<DisplayAssetList> getBorrowedAsset() {
+		return borrowedAsset;
+	}
+	public void setBorrowedAsset(List<DisplayAssetList> borrowedAsset) {
+		this.borrowedAsset = borrowedAsset;
+	}
+}

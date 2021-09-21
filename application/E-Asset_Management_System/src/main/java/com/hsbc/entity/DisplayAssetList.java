@@ -1,6 +1,5 @@
 package com.hsbc.entity;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class DisplayAssetList {

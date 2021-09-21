@@ -32,13 +32,34 @@
 
 		</thead>
 	</table>
-
-
-
-
-
-
-
+	
+	<div class="container">
+		<h4>Borrowed assets list</h4>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Allocation Id</th>
+					<th>Asset Name</th>
+					<th>Type</th>
+					<th>Description</th>
+					<th>Date of Allocation</th>
+					<th>Due date</th>
+					<th>Late Fee</th>
+				</tr>
+				<c:forEach var="assets" items="${borrowedAssets}">
+					<tr>
+						<td><c:out value="${assets.allocationId}" /></td>
+						<td><c:out value="${assets.assetName}" /></td>
+						<td><c:out value="${assets.type}" /></td>
+						<td><c:out value="${assets.desciption}" /></td>
+						<td><c:out value="${assets.allocation_date}" /></td>
+						<td><c:out value="${assets.due_date}" /></td>
+						<td><c:out value="${assets.late_fee}" /></td>
+					</tr>
+				</c:forEach>
+			</thead>
+		</table>
+	</div>
 
 	<form action="BorrowAsset" method="get"
 		onsubmit="return validateData()">
