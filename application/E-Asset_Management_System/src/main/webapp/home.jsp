@@ -145,7 +145,8 @@
 			<span class="navbar-text">E-Asset Management </span>
 		</div>
 		<ul class="nav justify-content-center ">
-			<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+			<li class="nav-item"><a class="nav-link active"
+				aria-current="page" href="#">Home</a></li>
 			<li class="nav-item"><a class="nav-link" href="#feedback-link">Feedback</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">About</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Import
@@ -167,8 +168,10 @@
 						type specimen book. It has survived not only five centuries, but
 						also the leap into electronic typesetting, remaining essentially
 						unchanged.</p>
-					<a href="register1.jsp" style="padding: 12px; margin: 5px;" class="btn btn-outline-primary">Register</a>
-					<a href="login1.jsp" style="padding: 12px; margin: 5px;" class="btn btn-outline-primary">Login</a>
+					<a href="register1.jsp" style="padding: 12px; margin: 5px;"
+						class="btn btn-outline-primary">Register</a> <a href="login1.jsp"
+						style="padding: 12px; margin: 5px;"
+						class="btn btn-outline-primary">Login</a>
 				</div>
 			</div>
 		</div>

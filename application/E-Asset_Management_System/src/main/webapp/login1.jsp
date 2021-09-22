@@ -30,12 +30,14 @@
 												email for login</span><br>
 
 											<div class="custom-control custom-radio">
-												<input type="radio" name="uname-email" value="username" required><label>User Name</label>
-					
+												<input type="radio" name="uname-email" value="username"
+													required><label>User Name</label>
+
 											</div>
 
 											<div class="custom-control custom-radio">
-												<input type="radio" name="uname-email" value="email" required><label>User Email</label>
+												<input type="radio" name="uname-email" value="email"
+													required><label>User Email</label>
 											</div>
 
 											<div class="form-group">

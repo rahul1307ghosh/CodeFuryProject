@@ -32,7 +32,7 @@
 
 		</thead>
 	</table>
-	
+
 	<div class="container">
 		<h4>Borrowed assets list</h4>
 		<table class="table">

@@ -33,13 +33,14 @@
 										<div class="form-group">
 											<input type="text" name="telephone"
 												class="form-control form-control-user"
-												id="exampleInputPassword" placeholder="Enter Telephone no.." required>
+												id="exampleInputPassword" placeholder="Enter Telephone no.."
+												required>
 										</div>
 										<div class="form-group">
 											<input type="email" name="email"
 												class="form-control form-control-user"
 												id="exampleInputEmail" aria-describedby="emailHelp"
-												name="uname" placeholder="Enter Name..." required>
+												name="uname" placeholder="Enter Email..." required>
 										</div>
 										<div class="form-group">
 											<input input type="text" name="userName"
@@ -71,7 +72,7 @@
 										<div class="text-center">
 											<a class="btn btn-link" href="home.jsp">Go Back</a>
 										</div>
-										
+
 									</form>
 
 								</div>

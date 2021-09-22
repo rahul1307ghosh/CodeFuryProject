@@ -50,7 +50,7 @@ public class UserLogin extends HttpServlet {
 					userList.remove(user);
 					System.out.println(userList);
 					request.getSession(true).setAttribute("users", userList);
-					request.getRequestDispatcher("/adminHomePage.jsp").forward(request, response);
+					request.getRequestDispatcher("/admin.jsp").forward(request, response);
 					System.out.println("Admin Home Page");
 					break;
 				}
