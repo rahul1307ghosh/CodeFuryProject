@@ -92,7 +92,7 @@ public class AssetOverdueMangDao {
 		
 		try {
 			Connection conn = DBUtil.getConnConnection();
-			PreparedStatement pst = conn.prepareStatement("select user.name,user.email,asset.assetName,asset.type,user.userId,asset.assetId,assetAllocation.due_date from user inner join assetAllocation on user.userId=assetAllocation.empId inner join asset on asset.assetId=assetAllocation.assetId where assetAllocation.due_date > CURDATE() order by user.name; ");
+			PreparedStatement pst = conn.prepareStatement("select user.name,user.email,asset.assetName,asset.type,user.userId,asset.assetId,assetAllocation.due_date from user inner join assetAllocation on user.userId=assetAllocation.empId inner join asset on asset.assetId=assetAllocation.assetId where assetAllocation.due_date < CURDATE() order by user.name; ");
 			
 			ResultSet rs = pst.executeQuery();
 
@@ -111,7 +111,7 @@ public class AssetOverdueMangDao {
 		
 		try {
 			Connection conn = DBUtil.getConnConnection();
-			PreparedStatement pst = conn.prepareStatement("select user.name,user.email,asset.assetName,asset.type,user.userId,asset.assetId,assetAllocation.due_date from user inner join assetAllocation on user.userId=assetAllocation.empId inner join asset on asset.assetId=assetAllocation.allocationId where assetAllocation.due_date > CURDATE() order by assetAllocation.due_date; ");
+			PreparedStatement pst = conn.prepareStatement("select user.name,user.email,asset.assetName,asset.type,user.userId,asset.assetId,assetAllocation.due_date from user inner join assetAllocation on user.userId=assetAllocation.empId inner join asset on asset.assetId=assetAllocation.allocationId where assetAllocation.due_date < CURDATE() order by assetAllocation.due_date; ");
 			
 			ResultSet rs = pst.executeQuery();
 
@@ -130,7 +130,7 @@ public class AssetOverdueMangDao {
 		
 		try {
 			Connection conn = DBUtil.getConnConnection();
-			PreparedStatement pst = conn.prepareStatement("select user.name,user.email,asset.assetName,asset.type,user.userId,asset.assetId,assetAllocation.due_date from user inner join assetAllocation on user.userId=assetAllocation.empId inner join asset on asset.assetId=assetAllocation.assetId where assetAllocation.due_date > CURDATE() order by asset.type ");
+			PreparedStatement pst = conn.prepareStatement("select user.name,user.email,asset.assetName,asset.type,user.userId,asset.assetId,assetAllocation.due_date from user inner join assetAllocation on user.userId=assetAllocation.empId inner join asset on asset.assetId=assetAllocation.assetId where assetAllocation.due_date < CURDATE() order by asset.type ");
 			
 			ResultSet rs = pst.executeQuery();
 
