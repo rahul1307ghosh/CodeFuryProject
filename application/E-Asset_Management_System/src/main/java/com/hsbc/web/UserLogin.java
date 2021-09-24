@@ -36,15 +36,18 @@ public class UserLogin extends HttpServlet {
 		String id_choice = request.getParameter("uname-email");
 		System.out.println("id choice : " + id_choice);
 		String pwd = request.getParameter("pwd");
-		
+
 		List<User> userList = UserInfoDao.listAll();
 		EmployeeDisplayAsset empUser = new EmployeeDisplayAsset();
 		empUser = LoginDao.login(uname_email, id_choice, pwd);
-		if (empUser.getRole().equalsIgnoreCase("admin")) {
+		System.out.println("empUser = " + empUser);
+		if(empUser == null) {
+			request.getRequestDispatcher("/loginFail.jsp").forward(request, response);
 			
+		}else if (empUser.getRole().equalsIgnoreCase("admin")) {
 
-			for(User user:userList) {
-				if(empUser.getRole().equalsIgnoreCase("admin")) {
+			for (User user : userList) {
+				if (empUser.getRole().equalsIgnoreCase("admin")) {
 					request.getSession(true).setAttribute("adminData", user);
 					System.out.println(user);
 					userList.remove(user);
@@ -55,7 +58,7 @@ public class UserLogin extends HttpServlet {
 					break;
 				}
 			}
-		} else if(empUser.getRole().equalsIgnoreCase("borrower")){
+		} else if (empUser.getRole().equalsIgnoreCase("borrower")) {
 			System.out.println("User Home Page");
 			request.getSession(true).setAttribute("userData", empUser.getUser());
 			request.getSession(true).setAttribute("prevLogin", empUser.getPrevLogin());
@@ -69,8 +72,8 @@ public class UserLogin extends HttpServlet {
 //				}
 //			}
 			request.getRequestDispatcher("/userHomePage.jsp").forward(request, response);
-			
-		}else {
+
+		} else {
 			response.getWriter().write("Invalid Credentials");
 		}
 

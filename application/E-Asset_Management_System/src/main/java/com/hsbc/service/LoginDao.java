@@ -5,8 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,33 +12,38 @@ import com.hsbc.entity.DisplayAssetList;
 import com.hsbc.entity.EmployeeDisplayAsset;
 import com.hsbc.entity.User;
 import com.hsbc.util.DBUtil;
+import com.hsbc.util.DateTimeUtil;
 import com.hsbc.util.EncryptionPass;
 
 public class LoginDao {
 	public static EmployeeDisplayAsset login(String uname_email, String id_choice, String pwd) {
-		String resp = "Invalid Credentials";
 		String query = "";
 		List<DisplayAssetList> assetlist = null;
 		int userID;
 		try {
-			query = "select * from user where " + id_choice + " = \"" + uname_email + "\" and password ="
-					+ "\"" + EncryptionPass.toHexString(EncryptionPass.getSHA(pwd)) + "\"";
+			query = "select * from user where " + id_choice + " = \"" + uname_email + "\" and password =" + "\""
+					+ EncryptionPass.toHexString(EncryptionPass.getSHA(pwd)) + "\"";
+
 		} catch (NoSuchAlgorithmException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		} finally {
+
 		}
-		System.out.println(query);
+
+		System.out.println("query = " + query);
+
 		try {
 			Connection conn = DBUtil.getConnConnection();
 
 			PreparedStatement pst_1 = conn.prepareStatement(query);
 
-			System.out.println(query);
 			ResultSet rs = pst_1.executeQuery();
 
 			int a = 0;
 			if (rs.next()) {
 				a = rs.getInt(1);
+				System.out.println("a = " + a);
 			}
 			if (a != 0) {
 				User user = new User();
@@ -130,22 +133,23 @@ public class LoginDao {
 
 	private static String setLastLogin(String id_choice, String uname_email) {
 		String prev_last_login = "";
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-		LocalDateTime now = LocalDateTime.now();
-		System.out.println(dtf.format(now));
-		String query1 = "select lastlogin from user where " + id_choice + " = \""
-				+ uname_email + "\"";
-		String query2 = "Update user set lastlogin = \" " + dtf.format(now) + " \" where " + id_choice + " = \""
-				+ uname_email + "\"";
+//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//		LocalDateTime now = LocalDateTime.now();
+//		System.out.println(dtf.format(now));
+		String query1 = "select lastlogin from user where " + id_choice + " = \"" + uname_email + "\"";
+		String query2 = "Update user set lastlogin = \" " + DateTimeUtil.getCurrentDateTime() + " \" where " + id_choice
+				+ " = \"" + uname_email + "\"";
 
 		try {
 			Connection conn = DBUtil.getConnConnection();
 			PreparedStatement pst_1 = conn.prepareStatement(query1);
 			ResultSet rs = pst_1.executeQuery();
-			if(rs.next()) {
+
+			if (rs.next()) {
+				System.out.println("rs.getTimestamp(1) = " + rs.getTimestamp(1));
 				prev_last_login = rs.getTimestamp(1).toString();
 			}
-			
+
 			System.out.println(prev_last_login);
 
 			PreparedStatement pst_2 = conn.prepareStatement(query2);

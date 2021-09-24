@@ -28,12 +28,11 @@ public class AddAssetCategory  extends HttpServlet {
 
 		
 		String resp = AssetCategoryDao.save(new AssetCategory(category,lendingPeriod,lateReturnFee,daysBanned));
-		response.getWriter().write(resp);
+		request.getRequestDispatcher("/OperationSuccess.jsp").forward(request, response);
 		
 		try {
 			System.out.println(DBUtil.getConnConnection());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
