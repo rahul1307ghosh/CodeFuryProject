@@ -32,7 +32,12 @@
 	display: block;
 }
 </style>
-
+<script>
+function deleteItems() {
+	session.invalidate(); 
+	  location.replace("http://localhost:8080/E-Asset_Management_System/home.jsp")
+	}
+</script>
 </head>
 											
 

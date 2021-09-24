@@ -73,7 +73,7 @@ public class AssetOverdueMangDao {
 		
 		try {
 			Connection conn = DBUtil.getConnConnection();
-			PreparedStatement pst = conn.prepareStatement("select user.name,user.email,asset.assetName,asset.type,user.userId,asset.assetId,assetAllocation.due_date from user inner join assetAllocation on user.userId=assetAllocation.empId inner join asset on asset.assetId=assetAllocation.assetId where assetAllocation.due_date > CURDATE();");
+			PreparedStatement pst = conn.prepareStatement("select user.name,user.email,asset.assetName,asset.type,user.userId,asset.assetId,assetAllocation.due_date from user inner join assetAllocation on user.userId=assetAllocation.empId inner join asset on asset.assetId=assetAllocation.assetId where assetAllocation.due_date < CURDATE();");
 			
 			ResultSet rs = pst.executeQuery();
 
