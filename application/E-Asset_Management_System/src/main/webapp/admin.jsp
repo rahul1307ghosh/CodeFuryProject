@@ -7,7 +7,7 @@
 
 
 <body id="page-top">
-
+	<jsp:include page="checkSession.jsp" />
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 

@@ -10,6 +10,7 @@
 	
 </script>
 <body>
+<jsp:include page="checkSession.jsp" />
 	<div id="wrapper">
 
 		<jsp:include page="sidebar.jsp" />
@@ -34,6 +35,7 @@
 											List<overdue> List = (List<overdue>) session.getAttribute("assetList");
 											if (List.size() > 0) {
 												int i = 1;
+											
 											%>
 											<table class="table table-bordered">
 												<thead>

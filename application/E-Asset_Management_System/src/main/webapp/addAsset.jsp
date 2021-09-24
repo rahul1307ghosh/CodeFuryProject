@@ -5,6 +5,7 @@
 <html>
 <jsp:include page="head.jsp" />
 <body>
+<jsp:include page="checkSession.jsp" />
 	<div id="wrapper">
 		<jsp:include page="sidebar.jsp" />
 
@@ -23,6 +24,9 @@
 									<div class="p-5">
 										<div class="text-center">
 											<h1 class="h4 text-gray-900 mb-4">Add Asset</h1>
+											<div>
+
+											</div>
 										</div>
 										<form action="addAsset" method="POST">
 											<div class="form-group">
@@ -32,8 +36,10 @@
 													placeholder="Asset Name">
 											</div>
 											<div class="form-group">
+
 												<select name="category"
 													class="form-control form-control-user">
+
 													<c:forEach var="emp" items="${catList}">
 														<option value="${emp.category}">${emp.category}</option>
 

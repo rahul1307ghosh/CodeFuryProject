@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav
 	class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -49,13 +49,6 @@
 				</form>
 			</div></li>
 
-		<!-- Nav Item - Alerts -->
-		<li class="nav-item dropdown no-arrow mx-1"><a
-			class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
-			role="button" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts -->
-				<span class="badge badge-danger badge-counter">3+</span>
-		</a></li>
 
 
 
@@ -66,15 +59,16 @@
 			class="nav-link dropdown-toggle" href="#" id="userDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"> <span
-				class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas
-					McGee</span> <img class="img-profile rounded-circle"
-				src="img/undraw_profile.svg">
+				class="mr-2 d-none d-lg-inline text-gray-600 small">${adminData.email}</span> <img class="img-profile rounded-circle"
+				src="https://cdn-icons-png.flaticon.com/512/2345/2345337.png">
 		</a></li>
-		<li class="nav-item dropdown no-arrow"><a class="dropdown-item"
-			href="#" data-toggle="modal" data-target="#logoutModal"> <i
-				class="fa fa-sign-out "></i>
-
+		<li class="nav-item dropdown no-arrow"><a
+			class="nav-link dropdown-toggle" href="#" id="userDropdown"
+			role="button" data-toggle="dropdown" aria-haspopup="true"
+			aria-expanded="false"> 
+				<i class="fa fa-power-off" style="font-size:20px;color:red"></i>
 		</a></li>
+		
 
 
 

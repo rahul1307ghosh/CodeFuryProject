@@ -50,6 +50,7 @@
 	}
 </script>
 <body>
+<jsp:include page="checkSession.jsp" />
 	<div id="wrapper">
 
 		<jsp:include page="sidebar.jsp" />

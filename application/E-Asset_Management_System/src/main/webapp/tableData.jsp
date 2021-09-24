@@ -7,6 +7,7 @@
 List<overdue> List = (List<overdue>) session.getAttribute("assetAllocatedList");
 if (List.size() > 0) {
 %>
+
 <table class="table">
 	<thead>
 		<tr>

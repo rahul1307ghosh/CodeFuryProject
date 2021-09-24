@@ -5,6 +5,7 @@
 <html>
 <jsp:include page="head.jsp" />
 <body>
+	<jsp:include page="checkSession.jsp" />
 	<div id="wrapper">
 		<jsp:include page="sidebar.jsp" />
 
