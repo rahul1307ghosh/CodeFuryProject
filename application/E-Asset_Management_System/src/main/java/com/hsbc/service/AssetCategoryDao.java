@@ -11,15 +11,31 @@ import java.util.List;
 
 import com.hsbc.entity.Asset;
 import com.hsbc.entity.AssetCategory;
+import com.hsbc.exception.AssetCategoryAlreadyExistException;
 import com.hsbc.util.DBUtil;
 
 public class AssetCategoryDao {
-	public static String save(AssetCategory assetCategory) {
+	public static String save(AssetCategory assetCategory) throws AssetCategoryAlreadyExistException {
 		String response = "Asset already Exist";
-		System.out.println();
+
+		String category_count = "select count(category) from assetCategory where category=?" ;
 		try {
-			
 			Connection conn = DBUtil.getConnConnection();
+			
+			PreparedStatement pst_1 = conn.prepareStatement(category_count);
+			pst_1.setString(1,assetCategory.getCategory());
+			ResultSet rs = pst_1.executeQuery();
+			
+			int a = 0;
+			if (rs.next()) {
+				a = rs.getInt(1);
+			}
+			System.out.println(a);
+			if (a==1) {
+				throw new AssetCategoryAlreadyExistException("Category exists in the db");
+			} else {
+		
+			
 			PreparedStatement pst = conn
 						.prepareStatement("insert into assetCategory value(?,?,?,?)");
 
@@ -32,12 +48,14 @@ public class AssetCategoryDao {
 				if (count == 1) {
 					response = "asset Category added";
 				}
-			
-		} catch (SQLException e) {
+		
+		} }catch (SQLException e) {
 			e.printStackTrace();
 		}
+			
 		return response;
-
+			
+		
 	}
 	public static List<AssetCategory> listAll() {
 		List<AssetCategory> assetList= new ArrayList<AssetCategory>();

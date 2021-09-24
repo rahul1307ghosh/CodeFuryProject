@@ -4,7 +4,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%
 @SuppressWarnings("unchecked")
-List<overdue> List = (List<overdue>) session.getAttribute("list1");
+List<overdue> List = (List<overdue>) session.getAttribute("assetAllocatedList");
 if (List.size() > 0) {
 %>
 <table class="table">

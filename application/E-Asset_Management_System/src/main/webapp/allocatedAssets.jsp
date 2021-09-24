@@ -31,7 +31,7 @@
 										<div id="resp" class="form-group">
 											<%
 											@SuppressWarnings("unchecked")
-											List<overdue> List = (List<overdue>) session.getAttribute("list1");
+											List<overdue> List = (List<overdue>) session.getAttribute("assetList");
 											if (List.size() > 0) {
 												int i = 1;
 											%>

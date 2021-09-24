@@ -48,7 +48,7 @@
 	</a></li>
 
 	<li class="nav-item active"><a class="nav-link"
-		href="allocatedAssets.jsp"> <i class="fa fa-list-alt"></i> <span>Allocated
+		href="fetchAllocatedAssets"> <i class="fa fa-list-alt"></i> <span>Allocated
 				Assets</span>
 	</a></li>
 

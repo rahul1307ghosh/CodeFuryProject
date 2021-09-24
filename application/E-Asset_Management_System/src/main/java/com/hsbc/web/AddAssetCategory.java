@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hsbc.entity.Asset;
 import com.hsbc.entity.AssetCategory;
+import com.hsbc.exception.AssetCategoryAlreadyExistException;
 import com.hsbc.service.AssetCategoryDao;
 import com.hsbc.service.AssetDao;
 import com.hsbc.util.DBUtil;
@@ -27,7 +28,13 @@ public class AddAssetCategory  extends HttpServlet {
 		String daysBanned = (request.getParameter("daysBanned"));
 
 		
-		String resp = AssetCategoryDao.save(new AssetCategory(category,lendingPeriod,lateReturnFee,daysBanned));
+		try {
+			String resp = AssetCategoryDao.save(new AssetCategory(category,lendingPeriod,lateReturnFee,daysBanned));
+		} catch (AssetCategoryAlreadyExistException e1) {
+			// TODO Auto-generated catch block
+			request.getRequestDispatcher("/failure.jsp").forward(request, response);
+			e1.printStackTrace();
+		}
 		request.getRequestDispatcher("/OperationSuccess.jsp").forward(request, response);
 		
 		try {

@@ -23,6 +23,7 @@ public class LoginDao {
 		try {
 			query = "select * from user where " + id_choice + " = \"" + uname_email + "\" and password =" + "\""
 					+ EncryptionPass.toHexString(EncryptionPass.getSHA(pwd)) + "\"";
+			System.out.println(EncryptionPass.toHexString(EncryptionPass.getSHA(pwd)));
 
 		} catch (NoSuchAlgorithmException e1) {
 			// TODO Auto-generated catch block
