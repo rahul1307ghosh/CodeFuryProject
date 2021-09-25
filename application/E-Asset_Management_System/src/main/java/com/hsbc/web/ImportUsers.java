@@ -50,7 +50,7 @@ public class ImportUsers extends HttpServlet {
 
 			a = (JSONArray) parser.parse(new FileReader("D:\\" + fileName));
 //			File f = new File("D:\\" + fileName);
-			//f.deleteOnExit();//wip
+			// f.deleteOnExit();//wip
 
 			for (Object o : a) {
 				JSONObject empJsonFileModel = (JSONObject) o;
@@ -73,13 +73,15 @@ public class ImportUsers extends HttpServlet {
 				if (resp.equalsIgnoreCase("User already exists")) {
 					failedImportList.add(new User(uname, "", telephone, email, userName, "", ""));
 				}
-					
 
 			}
 
 		}
 
-		catch (FileNotFoundException e) {
+		catch (ClassCastException e) {
+			e.printStackTrace();
+			request.getRequestDispatcher("/OperationFail.jsp").forward(request, response);
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -87,7 +89,7 @@ public class ImportUsers extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		System.out.println("failedImportList = "+ failedImportList);
+		System.out.println("failedImportList = " + failedImportList);
 		request.getSession(true).setAttribute("list", failedImportList);
 		request.getRequestDispatcher("/postUserImport.jsp").forward(request, response);
 

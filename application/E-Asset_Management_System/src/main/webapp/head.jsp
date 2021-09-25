@@ -22,6 +22,9 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <style type="text/css">
+.bodyClass::-webkit-scrollbar {
+  display: none;
+}
 .my-custom-scrollbar {
 	position: relative;
 	height: 600px;

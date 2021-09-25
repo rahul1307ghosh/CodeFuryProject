@@ -32,6 +32,9 @@ public class UserLogin extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		System.out.println("request.getParameter(\"userName\") = " + request.getParameter("userName"));
+
 		String uname_email = request.getParameter("userName");
 		String id_choice = request.getParameter("uname-email");
 		System.out.println("id choice : " + id_choice);
@@ -41,10 +44,10 @@ public class UserLogin extends HttpServlet {
 		EmployeeDisplayAsset empUser = new EmployeeDisplayAsset();
 		empUser = LoginDao.login(uname_email, id_choice, pwd);
 		System.out.println("empUser = " + empUser);
-		if(empUser == null) {
+		if (empUser == null) {
 			request.getRequestDispatcher("/loginFail.jsp").forward(request, response);
-			
-		}else if (empUser.getRole().equalsIgnoreCase("admin")) {
+
+		} else if (empUser.getRole().equalsIgnoreCase("admin")) {
 
 			for (User user : userList) {
 				if (empUser.getRole().equalsIgnoreCase("admin")) {
@@ -77,6 +80,11 @@ public class UserLogin extends HttpServlet {
 			response.getWriter().write("Invalid Credentials");
 		}
 
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("/login1.jsp").forward(request, response);
 	}
 
 }

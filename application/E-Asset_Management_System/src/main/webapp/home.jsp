@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" session="false"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,10 @@
 	crossorigin="anonymous">
 
 <style type="text/css">
+.bodyClass::-webkit-scrollbar {
+  display: none;
+}
+
 .header {
 	padding: 60px;
 	text-align: center;
@@ -138,7 +143,12 @@
 }
 </style>
 </head>
-<body>
+<body class="bodyClass">
+	<%
+	if (request.getSession(true).getAttribute("popularAssetList") == null) {
+		response.sendRedirect("home");
+	}
+	%>
 
 	<div class="header">
 		<div class="container-fluid">
@@ -179,37 +189,27 @@
 
 
 		<div class="container-fluid">
-			<div class="card-header">Poppular Assets</div>
+			<div class="card-header">Popular Assets</div>
 			<div class="container">
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">First</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
+								<th scope="col">Sr.no</th>
+								<th scope="col">Allocated Assets</th>
+								<th scope="col">Name</th>
+								<th scope="col">Type</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-							</tr>
+							<c:forEach var="user" items="${popularAssetList}">
+								<tr>
+									<td><c:out value="${user.dateAdded}" /></td>
+									<td><c:out value="${user.isAvailable()}" /></td>
+									<td><c:out value="${user.assetName}" /></td>
+									<td><c:out value="${user.type}" /></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
