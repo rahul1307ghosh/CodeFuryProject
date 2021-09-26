@@ -13,9 +13,6 @@ import com.hsbc.entity.User;
 import com.hsbc.service.RegisterDao;
 import com.hsbc.util.DBUtil;
 
-/**
- * Servlet implementation class RegisterUser
- */
 @WebServlet("/registerUser")
 public class RegisterUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;

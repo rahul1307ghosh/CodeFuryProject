@@ -16,7 +16,7 @@ public class RegisterDao {
 	public static String save(User user) {
 		String response = "User already exists";
 		String emp_count = "select count(email) from user where email= \"" + user.getEmail() + "\";";
-		System.out.println();
+
 		try {
 			Connection conn = DBUtil.getConnConnection();
 

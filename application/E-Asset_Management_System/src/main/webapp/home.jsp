@@ -12,10 +12,9 @@
 	rel="stylesheet"
 	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
 	crossorigin="anonymous">
-
 <style type="text/css">
 .bodyClass::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .header {
@@ -149,7 +148,6 @@
 		response.sendRedirect("home");
 	}
 	%>
-
 	<div class="header">
 		<div class="container-fluid">
 			<span class="navbar-text">E-Asset Management </span>
@@ -160,10 +158,10 @@
 			<li class="nav-item"><a class="nav-link" href="#feedback-link">Feedback</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">About</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Import
-					Users</a></li>
+					Users</a>
+				<h6>(Admin Only)</h6></li>
 		</ul>
 	</div>
-
 	<div class="container">
 		<div class="container-fluid">
 			<div class="card">
@@ -171,13 +169,11 @@
 				<div class="card-body">
 					<h5 class="card-title">Manage Assets in a simple and better
 						way</h5>
-					<p class="card-text">Lorem Ipsum is simply dummy text of the
-						printing and typesetting industry. Lorem Ipsum has been the
-						industry's standard dummy text ever since the 1500s, when an
-						unknown printer took a galley of type and scrambled it to make a
-						type specimen book. It has survived not only five centuries, but
-						also the leap into electronic typesetting, remaining essentially
-						unchanged.</p>
+					<p class="card-text">The E-Asset Management system is a
+						web-based application to keep track of several assets that can be
+						borrowed, their availability, their current location, the current
+						borrower and the asset history. This is the right place to borrow
+						necessary resources responsibly.</p>
 					<a href="register1.jsp" style="padding: 12px; margin: 5px;"
 						class="btn btn-outline-primary">Register</a> <a href="login1.jsp"
 						style="padding: 12px; margin: 5px;"
@@ -186,8 +182,6 @@
 			</div>
 		</div>
 		<hr>
-
-
 		<div class="container-fluid">
 			<div class="card-header">Popular Assets</div>
 			<div class="container">
@@ -196,7 +190,7 @@
 						<thead>
 							<tr>
 								<th scope="col">Sr.no</th>
-								<th scope="col">Allocated Assets</th>
+								<th scope="col">Allocation Count</th>
 								<th scope="col">Name</th>
 								<th scope="col">Type</th>
 							</tr>
@@ -213,10 +207,8 @@
 						</tbody>
 					</table>
 				</div>
-
 			</div>
 		</div>
-
 		<a id="feedback-link"></a>
 		<div class="container-fluid feedback-form-main-container">
 			<div class="container feedback-form">
@@ -256,20 +248,13 @@
 				</form>
 			</div>
 		</div>
-
 	</div>
-
-
 	<button onclick="topFunction()" id="myBtn" title="Go to top">/\</button>
-
 	<footer class="footer mt-auto py-3 bg-light">
 		<div class="container">
-			<span class="text-muted">Place sticky footer content here.</span>
-
+			<span class="text-muted">A Product by Team Code Genesis</span>
 		</div>
 	</footer>
-
-
 	<script type="text/javascript">
 		//Get the button:
 		mybutton = document.getElementById("myBtn");
@@ -294,6 +279,5 @@
 			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		}
 	</script>
-
 </body>
 </html>

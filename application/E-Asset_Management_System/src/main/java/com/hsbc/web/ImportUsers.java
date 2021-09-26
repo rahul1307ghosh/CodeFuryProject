@@ -1,6 +1,5 @@
 package com.hsbc.web;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,7 +21,6 @@ import org.json.simple.parser.ParseException;
 
 import com.hsbc.entity.User;
 import com.hsbc.service.RegisterDao;
-import com.hsbc.service.UserInfoDao;
 
 @WebServlet("/importUsers")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
@@ -49,8 +47,6 @@ public class ImportUsers extends HttpServlet {
 		try {
 
 			a = (JSONArray) parser.parse(new FileReader("D:\\" + fileName));
-//			File f = new File("D:\\" + fileName);
-			// f.deleteOnExit();//wip
 
 			for (Object o : a) {
 				JSONObject empJsonFileModel = (JSONObject) o;

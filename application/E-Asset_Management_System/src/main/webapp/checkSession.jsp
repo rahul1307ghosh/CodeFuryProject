@@ -1,9 +1,7 @@
 <%
-if(session.getAttribute("adminData")==null)
-{
-	%>
-	<jsp:forward page="login1.jsp" />
-	<% 
+if (session.getAttribute("adminData") == null) {
+%>
+<jsp:forward page="login1.jsp" />
+<%
 }
-
 %>

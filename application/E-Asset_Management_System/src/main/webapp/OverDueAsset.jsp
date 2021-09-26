@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="head.jsp" />
-
 <script type="text/javascript">
 	function changeFunc() {
 		var selectBox = document.getElementById("selectBox");
@@ -50,18 +49,15 @@
 	}
 </script>
 <body>
-<jsp:include page="checkSession.jsp" />
+	<jsp:include page="checkSession.jsp" />
 	<div id="wrapper">
-
 		<jsp:include page="sidebar.jsp" />
 		<div id="content-wrapper" class="d-flex flex-column">
 			<jsp:include page="topBar.jsp" />
 			<!-- Outer Row -->
 			<div class="row"></div>
 			<div class="row justify-content-center">
-
 				<div class="col-xl-11 col-lg-11 col-md-11">
-
 					<div class="card o-hidden border-0 shadow-lg my-5">
 						<div class="card-body p-0">
 							<!-- Nested Row within Card Body -->
@@ -79,9 +75,6 @@
 										<div id="resp" class="form-group">
 											<jsp:include page="tableData.jsp" />
 										</div>
-
-
-
 									</div>
 								</div>
 							</div>
@@ -91,6 +84,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

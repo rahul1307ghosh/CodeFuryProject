@@ -7,7 +7,6 @@
 <body>
 	<div id="wrapper">
 		<jsp:include page="sidebar.jsp" />
-
 		<div id="content-wrapper" class="d-flex flex-column">
 			<jsp:include page="topBar.jsp" />
 			<!-- Outer Row -->

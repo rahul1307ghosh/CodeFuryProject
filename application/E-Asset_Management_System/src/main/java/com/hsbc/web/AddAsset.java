@@ -23,17 +23,16 @@ public class AddAsset extends HttpServlet {
 		String uname = request.getParameter("uname");
 		String category = request.getParameter("category");
 		String description = (request.getParameter("description"));
-//		Date date = new Date();  
-//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//		LocalDateTime now = LocalDateTime.now();
 
 		String resp = AssetDao.save(new Asset(uname, category, description, DateTimeUtil.getCurrentDateTime(), 1));
+
+		System.out.println("resp = " + resp);
+
 		request.getRequestDispatcher("/OperationSuccess.jsp").forward(request, response);
 
 		try {
 			System.out.println(DBUtil.getConnConnection());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

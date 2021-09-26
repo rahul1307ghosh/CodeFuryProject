@@ -80,8 +80,6 @@ public class Overdue {
 		this.due_date = due_date;
 	}
 
-	
-	
 	private String type;
 	private String desc;
 	private String message;
@@ -109,8 +107,8 @@ public class Overdue {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 	public Overdue() {
-		
+
 	}
 }

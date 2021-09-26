@@ -11,9 +11,7 @@
 		<div id="content-wrapper" class="d-flex flex-column">
 			<jsp:include page="topBar.jsp" />
 			<div class="row justify-content-center">
-
 				<div class="col-xl-8 col-lg-8 col-md-8">
-
 					<div class="card o-hidden border-0 shadow-lg my-5">
 						<div class="card-body p-0">
 							<!-- Nested Row within Card Body -->
@@ -48,7 +46,6 @@
 													id="exampleInputEmail" aria-describedby="emailHelp"
 													placeholder="Days banned " required>
 											</div>
-
 											<div class="form-group">
 												<input class="btn btn-primary btn-user btn-block"
 													type="submit" value="Submit">
@@ -59,13 +56,9 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 		</div>
-
-
 	</div>
 </body>
 </html>

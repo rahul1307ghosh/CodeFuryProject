@@ -1,0 +1,18 @@
+[
+   {
+      "Name":"First Person",
+      "Role":"Borrower",
+      "Telephone":1234567890,
+      "Email":"fp@gmail.com",
+      "UserName":"fp",
+      "Password":"fp"
+   },
+   {
+      "Name":"Second Person",
+      "Role":"Borrower",
+      "Telephone":1234567890,
+      "Email":"sp@gmail.com",
+      "UserName":"sp",
+      "Password":"sp"
+   }
+]

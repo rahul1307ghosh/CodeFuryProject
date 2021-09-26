@@ -8,14 +8,11 @@
 	<jsp:include page="checkSession.jsp" />
 	<div id="wrapper">
 		<jsp:include page="sidebar.jsp" />
-
 		<div id="content-wrapper" class="d-flex flex-column">
 			<jsp:include page="topBar.jsp" />
 			<!-- Outer Row -->
 			<div class="row justify-content-center">
-
 				<div class="col-xl-8 col-lg-8 col-md-8">
-
 					<div class="card o-hidden border-0 shadow-lg my-5">
 						<div class="card-body p-0">
 							<!-- Nested Row within Card Body -->
@@ -33,43 +30,32 @@
 													placeholder="Asset Name" required>
 											</div>
 											<div class="form-group">
-
 												<select name="category"
 													class="form-control form-control-user">
-
 													<c:forEach var="emp" items="${catList}">
 														<option value="${emp.category}">${emp.category}</option>
-
 													</c:forEach>
-
 												</select>
 											</div>
 											<div class="form-group">
 												<textarea name="description"
 													class="form-control form-control-user"
-													id="exampleInputPassword" placeholder="Description" required></textarea>
+													id="exampleInputPassword" placeholder="Description"
+													required></textarea>
 											</div>
-
 											<div class="form-group">
 												<input class="btn btn-primary btn-user btn-block"
 													type="submit" value="Add">
 											</div>
 										</form>
-
-
-
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 		</div>
-
-
 	</div>
 </body>
 </html>

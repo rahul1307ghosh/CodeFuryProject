@@ -8,7 +8,7 @@ public class User {
 	private String userName;
 	private String pwd;
 	private String lastLogin;
-	
+
 	public User() {
 
 	}
@@ -23,7 +23,6 @@ public class User {
 		this.lastLogin = lastLogin;
 	}
 
-
 	public String getLastLogin() {
 		return lastLogin;
 	}
@@ -35,7 +34,7 @@ public class User {
 	public void setTelphone(long telphone) {
 		this.telephone = telphone;
 	}
-	
+
 	public long getTelphone() {
 		return telephone;
 	}
@@ -55,7 +54,6 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
 
 	public String getEmail() {
 		return email;
@@ -80,9 +78,10 @@ public class User {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+
 	@Override
 	public String toString() {
-		return name + " " + telephone + " " + email + " " + userName + " " +lastLogin;
+		return name + " " + telephone + " " + email + " " + userName + " " + lastLogin;
 	}
 
 }

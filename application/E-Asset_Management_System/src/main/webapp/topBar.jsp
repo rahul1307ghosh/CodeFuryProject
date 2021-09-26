@@ -1,19 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <nav
 	class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
 	<!-- Sidebar Toggle (Topbar) -->
 	<button id="sidebarToggleTop"
 		class="btn btn-link d-md-none rounded-circle mr-3">
 		<i class="fa fa-bars"></i>
 	</button>
-
-
-
 	<!-- Topbar Navbar -->
 	<ul class="navbar-nav ml-auto">
-
 		<!-- Nav Item - Search Dropdown (Visible Only XS) -->
 		<li class="nav-item dropdown no-arrow d-sm-none"><a
 			class="nav-link dropdown-toggle" href="#" id="searchDropdown"
@@ -36,30 +30,21 @@
 					</div>
 				</form>
 			</div></li>
-
-
-
-
 		<div class="topbar-divider d-none d-sm-block"></div>
-
 		<!-- Nav Item - User Information -->
 		<li class="nav-item dropdown no-arrow"><a
 			class="nav-link dropdown-toggle" href="#" id="userDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"> <span
-				class="mr-2 d-none d-lg-inline text-gray-600 small">${adminData.email}</span> <img class="img-profile rounded-circle"
+				class="mr-2 d-none d-lg-inline text-gray-600 small">${adminData.email}</span>
+				<img class="img-profile rounded-circle"
 				src="https://cdn-icons-png.flaticon.com/512/2345/2345337.png">
 		</a></li>
 		<li class="nav-item dropdown no-arrow"><a
 			class="nav-link dropdown-toggle" href="abc.jsp" id="userDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="false"> 
-				<i class="fa fa-power-off" style="font-size:20px;color:red"></i>
+			aria-expanded="false"> <i class="fa fa-power-off"
+				style="font-size: 20px; color: red"></i>
 		</a></li>
-		
-
-
-
 	</ul>
-
 </nav>

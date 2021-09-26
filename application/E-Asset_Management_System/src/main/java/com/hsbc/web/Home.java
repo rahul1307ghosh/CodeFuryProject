@@ -32,7 +32,6 @@ public class Home extends HttpServlet {
 		try {
 			System.out.println(DBUtil.getConnConnection());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

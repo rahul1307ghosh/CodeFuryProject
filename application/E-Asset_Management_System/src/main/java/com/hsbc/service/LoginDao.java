@@ -25,7 +25,6 @@ public class LoginDao {
 		try {
 			query = "select * from user where " + id_choice + " = \"" + uname_email + "\" and password =" + "\""
 					+ EncryptionPass.toHexString(EncryptionPass.getSHA(pwd)) + "\"";
-			System.out.println(EncryptionPass.toHexString(EncryptionPass.getSHA(pwd)));
 
 		} catch (NoSuchAlgorithmException e1) {
 			// TODO Auto-generated catch block
@@ -33,8 +32,6 @@ public class LoginDao {
 		} finally {
 
 		}
-
-		System.out.println("query = " + query);
 
 		try {
 			Connection conn = DBUtil.getConnConnection();
@@ -46,7 +43,6 @@ public class LoginDao {
 			int a = 0;
 			if (rs.next()) {
 				a = rs.getInt(1);
-				System.out.println("a = " + a);
 			}
 			if (a != 0) {
 				User user = new User();
@@ -58,9 +54,7 @@ public class LoginDao {
 				user.setPwd("");
 				user.setLastLogin(rs.getString("lastLogin"));
 				userID = rs.getInt("userId");
-				
-				System.out.println("rs.getInt(\"userId\") = " + rs.getInt("userId"));
-				
+
 				assetlist = displayEmployeeAssets(userID);
 				EmployeeDisplayAsset empUser = new EmployeeDisplayAsset();
 				empUser.setUser(user);
@@ -68,7 +62,7 @@ public class LoginDao {
 				empUser.setBorrowedAsset(assetlist);
 				empUser.setPrevLogin(setLastLogin(id_choice, uname_email));
 				empUser.setUserID(userID);
-				System.out.println("Login Successfull");
+
 				return empUser;
 			}
 		} catch (SQLException e) {
@@ -88,7 +82,6 @@ public class LoginDao {
 
 			PreparedStatement pst_1 = conn.prepareStatement(query);
 
-			System.out.println(query);
 			ResultSet rs = pst_1.executeQuery();
 
 			while (rs.next()) {
@@ -124,12 +117,10 @@ public class LoginDao {
 
 			PreparedStatement pst_1 = conn.prepareStatement(query);
 
-			System.out.println(query);
 			ResultSet rs = pst_1.executeQuery();
 
 			if (rs.next()) {
 				role = rs.getString(1);
-				System.out.println(role);
 			}
 
 		} catch (SQLException e) {
@@ -140,10 +131,9 @@ public class LoginDao {
 
 	private static String setLastLogin(String id_choice, String uname_email) {
 		String prev_last_login = "";
-//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//		LocalDateTime now = LocalDateTime.now();
-//		System.out.println(dtf.format(now));
+
 		String query1 = "select lastlogin from user where " + id_choice + " = \"" + uname_email + "\"";
+
 		String query2 = "Update user set lastlogin = \" " + DateTimeUtil.getCurrentDateTime() + " \" where " + id_choice
 				+ " = \"" + uname_email + "\"";
 
@@ -153,15 +143,11 @@ public class LoginDao {
 			ResultSet rs = pst_1.executeQuery();
 
 			if (rs.next()) {
-				System.out.println("rs.getTimestamp(1) = " + rs.getTimestamp(1));
 				prev_last_login = rs.getTimestamp(1).toString();
 			}
 
-			System.out.println(prev_last_login);
-
 			PreparedStatement pst_2 = conn.prepareStatement(query2);
 
-			System.out.println(query2);
 			int count = pst_2.executeUpdate();
 
 			if (count == 1) {
@@ -173,9 +159,6 @@ public class LoginDao {
 		}
 		return prev_last_login;
 	}
-	
-	
-	
 
 	public static List<AvailableAssetList> DisplayAvailableAsset(int userId) {
 		String query = "SELECT assetId, assetName, type, desciption from asset where isAvailable !=0 AND type NOT IN(SELECT distinct  asset.type from assetAllocation INNER JOIN asset ON assetAllocation.assetId= asset.assetId where assetallocation.empid="
@@ -185,7 +168,7 @@ public class LoginDao {
 		try {
 			Connection conn = DBUtil.getConnConnection();
 			PreparedStatement pst_3 = conn.prepareStatement(query);
-			System.out.println(query);
+
 			ResultSet rs = pst_3.executeQuery();
 
 			while (rs.next()) {

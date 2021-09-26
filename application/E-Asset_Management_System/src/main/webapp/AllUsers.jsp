@@ -8,14 +8,11 @@
 	<jsp:include page="checkSession.jsp" />
 	<div id="wrapper">
 		<jsp:include page="sidebar.jsp" />
-
 		<div id="content-wrapper" class="d-flex flex-column">
 			<jsp:include page="topBar.jsp" />
 			<!-- Outer Row -->
 			<div class="row justify-content-center">
-
 				<div class="col-xl-10 col-lg-10 col-md-10">
-
 					<div class="card o-hidden border-0 shadow-lg my-5">
 						<div class="card-body p-0">
 							<!-- Nested Row within Card Body -->
@@ -41,7 +38,6 @@
 														<td><c:out value="${user.lastLogin}" /></td>
 													</tr>
 												</c:forEach>
-
 											</thead>
 										</table>
 									</div>
@@ -49,13 +45,9 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 		</div>
-
-
 	</div>
 </body>
 </html>

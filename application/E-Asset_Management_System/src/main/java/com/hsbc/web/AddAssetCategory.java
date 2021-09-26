@@ -9,34 +9,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hsbc.entity.Asset;
 import com.hsbc.entity.AssetCategory;
 import com.hsbc.exception.AssetCategoryAlreadyExistException;
 import com.hsbc.service.AssetCategoryDao;
-import com.hsbc.service.AssetDao;
 import com.hsbc.util.DBUtil;
+
 @WebServlet("/addAssetCategory")
-public class AddAssetCategory  extends HttpServlet {
+public class AddAssetCategory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String category = request.getParameter("category");
-		int lendingPeriod =Integer.parseInt(request.getParameter("lendingPeriod"));
-		int lateReturnFee =Integer.parseInt(request.getParameter("lateReturnFee"));
+		int lendingPeriod = Integer.parseInt(request.getParameter("lendingPeriod"));
+		int lateReturnFee = Integer.parseInt(request.getParameter("lateReturnFee"));
 		String daysBanned = (request.getParameter("daysBanned"));
 
-		
 		try {
-			String resp = AssetCategoryDao.save(new AssetCategory(category,lendingPeriod,lateReturnFee,daysBanned));
+			String resp = AssetCategoryDao.save(new AssetCategory(category, lendingPeriod, lateReturnFee, daysBanned));
+			System.out.println("resp = " + resp);
 		} catch (AssetCategoryAlreadyExistException e1) {
-			// TODO Auto-generated catch block
 			request.getRequestDispatcher("/failure.jsp").forward(request, response);
 			e1.printStackTrace();
 		}
 		request.getRequestDispatcher("/OperationSuccess.jsp").forward(request, response);
-		
+
 		try {
 			System.out.println(DBUtil.getConnConnection());
 		} catch (SQLException e) {
@@ -44,4 +41,3 @@ public class AddAssetCategory  extends HttpServlet {
 		}
 	}
 }
-
