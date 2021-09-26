@@ -5,7 +5,7 @@
 <html>
 <jsp:include page="head.jsp" />
 <body>
-<jsp:include page="checkSession.jsp" />
+	<jsp:include page="checkSession.jsp" />
 	<div id="wrapper">
 		<jsp:include page="sidebar.jsp" />
 
@@ -24,16 +24,13 @@
 									<div class="p-5">
 										<div class="text-center">
 											<h1 class="h4 text-gray-900 mb-4">Add Asset</h1>
-											<div>
-
-											</div>
 										</div>
 										<form action="addAsset" method="POST">
 											<div class="form-group">
 												<input type="text" name="uname"
 													class="form-control form-control-user"
 													id="exampleInputEmail" aria-describedby="emailHelp"
-													placeholder="Asset Name">
+													placeholder="Asset Name" required>
 											</div>
 											<div class="form-group">
 
@@ -50,7 +47,7 @@
 											<div class="form-group">
 												<textarea name="description"
 													class="form-control form-control-user"
-													id="exampleInputPassword" placeholder="Description"></textarea>
+													id="exampleInputPassword" placeholder="Description" required></textarea>
 											</div>
 
 											<div class="form-group">

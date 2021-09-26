@@ -1,6 +1,7 @@
 package com.hsbc.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.hsbc.entity.AvailableAssetList;
 import com.hsbc.entity.EmployeeDisplayAsset;
+import com.hsbc.entity.Overdue;
 import com.hsbc.entity.User;
 import com.hsbc.service.LoginDao;
 import com.hsbc.service.UserInfoDao;
@@ -40,15 +43,17 @@ public class UserLogin extends HttpServlet {
 		System.out.println("id choice : " + id_choice);
 		String pwd = request.getParameter("pwd");
 
-		List<User> userList = UserInfoDao.listAll();
 		EmployeeDisplayAsset empUser = new EmployeeDisplayAsset();
 		empUser = LoginDao.login(uname_email, id_choice, pwd);
 		System.out.println("empUser = " + empUser);
+		
 		if (empUser == null) {
 			request.getRequestDispatcher("/loginFail.jsp").forward(request, response);
 
 		} else if (empUser.getRole().equalsIgnoreCase("admin")) {
 
+			List<User> userList = UserInfoDao.listAll();
+			
 			for (User user : userList) {
 				if (empUser.getRole().equalsIgnoreCase("admin")) {
 					request.getSession(true).setAttribute("adminData", user);
@@ -63,21 +68,31 @@ public class UserLogin extends HttpServlet {
 			}
 		} else if (empUser.getRole().equalsIgnoreCase("borrower")) {
 			System.out.println("User Home Page");
+			
+			List<AvailableAssetList> availList = new ArrayList<AvailableAssetList>();
+			availList = LoginDao.DisplayAvailableAsset(empUser.getUserID());
+			request.getSession(true).setAttribute("availableAssets", availList);
+			
 			request.getSession(true).setAttribute("userData", empUser.getUser());
+			request.getSession(true).setAttribute("empID", empUser.getUserID());
+			
+			System.out.println("empUser.getUserID() = " + empUser.getUserID());
+			
 			request.getSession(true).setAttribute("prevLogin", empUser.getPrevLogin());
 			request.getSession(true).setAttribute("borrowedAssets", empUser.getBorrowedAsset());
-			System.out.println(empUser.getUser());
-//			for(User user:userList) {
-//				if(user.getUserName().equals(uname_email) || user.getEmail().equals(uname_email)) {
-//					request.getSession(true).setAttribute("userData", user);
-//					System.out.println(user);
-//					break;
-//				}
-//			}
-			request.getRequestDispatcher("/userHomePage.jsp").forward(request, response);
+			
+			System.out.println("empUser.getBorrowedAsset() = " + empUser.getBorrowedAsset());
+			
+			
+		
+			List<Overdue> overdueList = new ArrayList<Overdue>();
+			overdueList = LoginDao.showMessage(empUser.getUserID());
+			request.getSession(true).setAttribute("overdueList", overdueList);
+			
+			request.getRequestDispatcher("/userDashboard.jsp").forward(request, response);
 
 		} else {
-			response.getWriter().write("Invalid Credentials");
+			request.getRequestDispatcher("/loginFail.jsp").forward(request, response);
 		}
 
 	}

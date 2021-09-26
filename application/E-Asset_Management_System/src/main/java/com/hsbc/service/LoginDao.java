@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hsbc.entity.AvailableAssetList;
 import com.hsbc.entity.DisplayAssetList;
 import com.hsbc.entity.EmployeeDisplayAsset;
+import com.hsbc.entity.Overdue;
 import com.hsbc.entity.User;
 import com.hsbc.util.DBUtil;
 import com.hsbc.util.DateTimeUtil;
@@ -56,12 +58,16 @@ public class LoginDao {
 				user.setPwd("");
 				user.setLastLogin(rs.getString("lastLogin"));
 				userID = rs.getInt("userId");
+				
+				System.out.println("rs.getInt(\"userId\") = " + rs.getInt("userId"));
+				
 				assetlist = displayEmployeeAssets(userID);
 				EmployeeDisplayAsset empUser = new EmployeeDisplayAsset();
 				empUser.setUser(user);
 				empUser.setRole(getRole(id_choice, uname_email));
 				empUser.setBorrowedAsset(assetlist);
 				empUser.setPrevLogin(setLastLogin(id_choice, uname_email));
+				empUser.setUserID(userID);
 				System.out.println("Login Successfull");
 				return empUser;
 			}
@@ -71,7 +77,7 @@ public class LoginDao {
 		return null;
 	}
 
-	private static List<DisplayAssetList> displayEmployeeAssets(int userID) {
+	public static List<DisplayAssetList> displayEmployeeAssets(int userID) {
 		String query = "SELECT assetAllocation.allocationId, asset.assetName, asset.type, asset.desciption, assetAllocation.allocation_date, assetAllocation.due_date, assetCategory.late_return_fee*DATEDIFF(CURDATE(),assetAllocation.due_date) As late_fee FROM user , assetAllocation, asset, assetCategory WHERE user.userId =assetAllocation.empId AND assetAllocation.assetId = asset.assetId AND assetCategory.category = asset.type AND user.userId="
 				+ userID + ";";
 
@@ -166,5 +172,66 @@ public class LoginDao {
 			e.printStackTrace();
 		}
 		return prev_last_login;
+	}
+	
+	
+	
+
+	public static List<AvailableAssetList> DisplayAvailableAsset(int userId) {
+		String query = "SELECT assetId, assetName, type, desciption from asset where isAvailable !=0 AND type NOT IN(SELECT distinct  asset.type from assetAllocation INNER JOIN asset ON assetAllocation.assetId= asset.assetId where assetallocation.empid="
+				+ userId + ");";
+		List<AvailableAssetList> availableAsset = new ArrayList<AvailableAssetList>();
+
+		try {
+			Connection conn = DBUtil.getConnConnection();
+			PreparedStatement pst_3 = conn.prepareStatement(query);
+			System.out.println(query);
+			ResultSet rs = pst_3.executeQuery();
+
+			while (rs.next()) {
+
+				AvailableAssetList assetList = new AvailableAssetList();
+				assetList.setAssetId(rs.getInt("assetId"));
+				assetList.setAssetName(rs.getString("assetName"));
+				assetList.setType(rs.getString("type"));
+				assetList.setDesc(rs.getString("desciption"));
+
+				availableAsset.add(assetList);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return availableAsset;
+	}
+
+	public static List<Overdue> showMessage(int userId) {
+		String query = "select asset.assetId, asset.assetName, asset.type, asset.desciption, overdueasset.message  from asset, overdueasset where asset.assetId = overdueasset.assetid AND userid="
+				+ userId + ";";
+		List<Overdue> overdueMessageList = new ArrayList<Overdue>();
+		try {
+			Connection conn = DBUtil.getConnConnection();
+			PreparedStatement pst_1 = conn.prepareStatement(query);
+
+			ResultSet rs = pst_1.executeQuery();
+
+			while (rs.next()) {
+
+				Overdue overdue = new Overdue();
+				overdue.setAssetId(rs.getInt("assetId"));
+				overdue.setAssetName(rs.getString("assetName"));
+				overdue.setType(rs.getString("type"));
+				overdue.setDesc(rs.getString("desciption"));
+				overdue.setMessage(rs.getString("message"));
+
+				overdueMessageList.add(overdue);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return overdueMessageList;
+
 	}
 }

@@ -1,4 +1,4 @@
-<%@page import="com.hsbc.entity.overdue"%>
+<%@page import="com.hsbc.entity.Overdue"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -32,10 +32,9 @@
 										<div id="resp" class="form-group">
 											<%
 											@SuppressWarnings("unchecked")
-											List<overdue> List = (List<overdue>) session.getAttribute("assetList");
-											if (List.size() > 0) {
-												int i = 1;
-											
+																				List<Overdue> List = (List<Overdue>) session.getAttribute("assetList");
+																				if (List.size() > 0) {
+																					int i = 1;
 											%>
 											<table class="table table-bordered">
 												<thead>
@@ -51,7 +50,7 @@
 
 													</tr>
 													<%
-													for (overdue e : List) {
+													for (Overdue e : List) {
 													%>
 													<tr>
 														<td><%=i++%></td>

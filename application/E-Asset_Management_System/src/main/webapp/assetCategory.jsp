@@ -28,25 +28,25 @@
 												<input type="text" name="category"
 													class="form-control form-control-user"
 													id="exampleInputEmail" aria-describedby="emailHelp"
-													placeholder="Category">
+													placeholder="Category" required>
 											</div>
 											<div class="form-group">
 												<input type="text" name="lendingPeriod"
 													class="form-control form-control-user"
 													id="exampleInputEmail" aria-describedby="emailHelp"
-													placeholder="Lending Period">
+													placeholder="Lending Period" required>
 											</div>
 											<div class="form-group">
 												<input type="text" name="lateReturnFee"
 													class="form-control form-control-user"
 													id="exampleInputEmail" aria-describedby="emailHelp"
-													placeholder="Late Return Fee ">
+													placeholder="Late Return Fee " required>
 											</div>
 											<div class="form-group">
 												<input type="text" name="daysBanned"
 													class="form-control form-control-user"
 													id="exampleInputEmail" aria-describedby="emailHelp"
-													placeholder="Days banned ">
+													placeholder="Days banned " required>
 											</div>
 
 											<div class="form-group">
@@ -54,9 +54,6 @@
 													type="submit" value="Submit">
 											</div>
 										</form>
-
-
-
 									</div>
 								</div>
 							</div>

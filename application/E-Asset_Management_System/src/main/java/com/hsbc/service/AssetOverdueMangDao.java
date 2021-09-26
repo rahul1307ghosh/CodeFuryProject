@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 
 import com.hsbc.entity.AssetManagement;
-import com.hsbc.entity.overdue;
+import com.hsbc.entity.Overdue;
 import com.hsbc.util.DBUtil;
 import java.text.ParseException;  
 import java.text.SimpleDateFormat;
@@ -49,8 +49,8 @@ public class AssetOverdueMangDao {
 		return response;
 
 	}
-	public static List<overdue> listAllAllocatedAssets() {
-		List<overdue> assetList= new ArrayList<overdue>();
+	public static List<Overdue> listAllAllocatedAssets() {
+		List<Overdue> assetList= new ArrayList<Overdue>();
 		
 		try {
 			Connection conn = DBUtil.getConnConnection();
@@ -59,7 +59,7 @@ public class AssetOverdueMangDao {
 			ResultSet rs = pst.executeQuery();
 
 			while(rs.next()) {
-				assetList.add(new overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
+				assetList.add(new Overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
 			} 
 
 		} catch (SQLException e) {
@@ -68,8 +68,8 @@ public class AssetOverdueMangDao {
 		System.out.println(assetList);
 		return assetList;
 	}
-	public static List<overdue> listAll() {
-		List<overdue> assetList= new ArrayList<overdue>();
+	public static List<Overdue> listAll() {
+		List<Overdue> assetList= new ArrayList<Overdue>();
 		
 		try {
 			Connection conn = DBUtil.getConnConnection();
@@ -78,7 +78,7 @@ public class AssetOverdueMangDao {
 			ResultSet rs = pst.executeQuery();
 
 			while(rs.next()) {
-				assetList.add(new overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
+				assetList.add(new Overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
 			} 
 
 		} catch (SQLException e) {
@@ -87,8 +87,8 @@ public class AssetOverdueMangDao {
 		System.out.println(assetList);
 		return assetList;
 	}
-	public static List<overdue> listAllByName() {
-		List<overdue> assetList= new ArrayList<overdue>();
+	public static List<Overdue> listAllByName() {
+		List<Overdue> assetList= new ArrayList<Overdue>();
 		
 		try {
 			Connection conn = DBUtil.getConnConnection();
@@ -97,7 +97,7 @@ public class AssetOverdueMangDao {
 			ResultSet rs = pst.executeQuery();
 
 			while(rs.next()) {
-				assetList.add(new overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
+				assetList.add(new Overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
 			} 
 
 		} catch (SQLException e) {
@@ -106,8 +106,8 @@ public class AssetOverdueMangDao {
 		System.out.println(assetList);
 		return assetList;
 	}
-	public static List<overdue> listAllByDate() {
-		List<overdue> assetList= new ArrayList<overdue>();
+	public static List<Overdue> listAllByDate() {
+		List<Overdue> assetList= new ArrayList<Overdue>();
 		
 		try {
 			Connection conn = DBUtil.getConnConnection();
@@ -116,7 +116,7 @@ public class AssetOverdueMangDao {
 			ResultSet rs = pst.executeQuery();
 
 			while(rs.next()) {
-				assetList.add(new overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
+				assetList.add(new Overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
 			} 
 
 		} catch (SQLException e) {
@@ -125,8 +125,8 @@ public class AssetOverdueMangDao {
 		System.out.println(assetList);
 		return assetList;
 	}
-	public static List<overdue> listAllByCategory() {
-		List<overdue> assetList= new ArrayList<overdue>();
+	public static List<Overdue> listAllByCategory() {
+		List<Overdue> assetList= new ArrayList<Overdue>();
 		
 		try {
 			Connection conn = DBUtil.getConnConnection();
@@ -135,7 +135,7 @@ public class AssetOverdueMangDao {
 			ResultSet rs = pst.executeQuery();
 
 			while(rs.next()) {
-				assetList.add(new overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
+				assetList.add(new Overdue(rs.getString("name"),rs.getString("email"),rs.getString("assetName"),rs.getString("type"),rs.getInt("userId"),rs.getInt("assetId"),rs.getDate("due_date")));
 			} 
 
 		} catch (SQLException e) {

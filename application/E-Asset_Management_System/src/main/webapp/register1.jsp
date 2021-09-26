@@ -34,7 +34,7 @@
 											<input type="text" name="telephone"
 												class="form-control form-control-user"
 												id="exampleInputPassword" placeholder="Enter Telephone no.."
-												required>
+												pattern="^\d{10}$" required>
 										</div>
 										<div class="form-group">
 											<input type="email" name="email"
